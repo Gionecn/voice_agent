@@ -1,0 +1,108 @@
+:root {
+  color: #202124;
+  background: #f7f7f8;
+  font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-synthesis: none;
+  --brand: #fb3a4e;
+  --brand-dark: #d8273b;
+  --ink: #202124;
+  --muted: #72747b;
+  --line: #e5e5e8;
+}
+
+* { box-sizing: border-box; }
+html,
+body { height: 100%; }
+body {
+  margin: 0;
+  overflow: hidden;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 82% 2%, #fb3a4e0d 0, transparent 28rem),
+    #f7f7f8;
+}
+button { font: inherit; }
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  width: min(80%, calc(100% - 40px));
+  height: 100%;
+  margin: 0 auto;
+  padding: 30px 0 24px;
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 58px;
+  padding: 0 2px 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand { display: flex; align-items: center; gap: 15px; }
+.brand__product { color: #555860; font-size: 13px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+
+.hero {
+  flex-shrink: 0;
+  padding: 22px 4px 18px;
+}
+
+.hero__content { max-width: 650px; }
+.eyebrow { margin: 0 0 10px; color: var(--brand); font-size: 12px; font-weight: 800; letter-spacing: .18em; }
+.hero__subtitle { max-width: 650px; margin: 0 0 14px; color: var(--muted); font-size: 16px; line-height: 1.8; }
+
+.model-list { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: #555860; font-size: 12px; font-weight: 650; }
+.model-list i { width: 3px; height: 3px; border-radius: 50%; background: #b4b5ba; }
+
+.status { display: inline-flex; align-items: center; gap: 9px; color: #575b54; font-size: 14px; }
+.status__dot { width: 10px; height: 10px; border-radius: 50%; background: #999; box-shadow: 0 0 0 5px #9992; }
+.status[data-state="listening"] .status__dot { background: var(--brand); box-shadow: 0 0 0 5px #fb3a4e22; }
+.status[data-state="thinking"] .status__dot { background: #c48024; box-shadow: 0 0 0 5px #c4802422; }
+.status[data-state="speaking"] .status__dot { background: #8d51ba; box-shadow: 0 0 0 5px #8d51ba22; }
+.status[data-state="error"] .status__dot { background: #bd3c3c; }
+
+.conversation {
+  flex-shrink: 0;
+  max-height: 68vh;
+  overflow-y: auto;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 18px 55px #2021240a;
+}
+.conversation__empty { display: grid; min-height: 250px; place-items: center; color: #96979c; text-align: center; }
+.message { max-width: 78%; margin: 0 0 18px; }
+.message--user { margin-left: auto; text-align: right; }
+.message__role { display: block; margin-bottom: 4px; color: #898b84; font-size: 12px; }
+.message p { display: inline-block; margin: 0; padding: 12px 15px; border-radius: 16px; background: #f1f1f3; line-height: 1.65; text-align: left; }
+.message--user p { color: #fff; background: #4a9fe8; }
+.message--partial { opacity: .65; }
+.message--partial p { border: 1px dashed #aaa; background: transparent; }
+
+.controls { display: flex; flex-shrink: 0; justify-content: center; gap: 12px; margin-top: auto; padding-top: 16px; }
+.button { min-width: 140px; padding: 14px 22px; border: 0; border-radius: 999px; cursor: pointer; font-weight: 650; transition: transform .15s, opacity .15s, box-shadow .15s; }
+.button:hover { transform: translateY(-1px); }
+.button:disabled { cursor: wait; opacity: .55; }
+.button--primary { color: white; background: #4a9fe8; box-shadow: 0 10px 28px #4a9fe835; }
+.button--primary:hover { box-shadow: 0 13px 32px #4a9fe845; }
+.button--interrupt { color: white; background: #9a483d; }
+.button--quiet { color: #393c42; background: #e9e9ec; }
+.error { flex-shrink: 0; margin: 8px 0; color: #a52e2e; text-align: center; }
+
+@media (max-width: 600px) {
+  .shell { width: min(100% - 24px, 1080px); padding-top: 18px; }
+  .topbar { align-items: flex-start; gap: 18px; padding-bottom: 16px; }
+  .brand { gap: 10px; }
+  .status { padding-top: 5px; font-size: 12px; }
+  .hero { padding-top: 18px; }
+  .hero__subtitle { font-size: 14px; }
+  .model-list { gap: 8px; }
+  .conversation { padding: 18px; }
+  .message { max-width: 92%; }
+  .controls { flex-wrap: wrap; }
+}
